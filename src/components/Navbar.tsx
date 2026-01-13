@@ -43,7 +43,7 @@ export default function Navbar() {
           isHidden && !isMobileMenuOpen ? '-translate-y-full' : 'translate-y-0'
         } ${isScrolled ? 'glass-strong py-4' : 'py-6'}`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="w-full px-8 sm:px-12 lg:px-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="#home" className="flex flex-col items-start group relative">
             <span className="font-[family-name:var(--font-bebas)] text-3xl tracking-[0.2em] text-[var(--primary)] transition-all duration-300 group-hover:text-glow group-hover:scale-105 origin-left">

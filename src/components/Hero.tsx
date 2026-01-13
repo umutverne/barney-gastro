@@ -55,19 +55,19 @@ export default function Hero() {
 
         {/* Buttons */}
         <div
-          className="flex flex-col sm:flex-row gap-5 justify-center items-center animate-fade-in-up"
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up"
           style={{ animationDelay: '800ms' }}
         >
           <Link
             href="#menu"
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-[var(--primary)] text-[var(--dark)] font-semibold text-sm uppercase tracking-wider rounded-lg transition-all duration-300 hover:bg-[var(--primary-light)] hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--primary)]/30"
+            className="group inline-flex items-center justify-center gap-4 px-12 py-5 min-w-[220px] bg-[var(--primary)] text-[var(--dark)] font-bold text-sm uppercase tracking-wider rounded-xl transition-all duration-300 hover:bg-[var(--primary-light)] hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--primary)]/30"
           >
             <span>Menüyü Keşfet</span>
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
             href="#about"
-            className="inline-flex items-center gap-3 px-10 py-5 border-2 border-white/50 text-white font-semibold text-sm uppercase tracking-wider rounded-lg transition-all duration-300 hover:border-[var(--primary)] hover:text-[var(--primary)]"
+            className="inline-flex items-center justify-center gap-3 px-12 py-5 min-w-[180px] border-2 border-white/60 text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all duration-300 hover:border-[var(--primary)] hover:text-[var(--primary)] hover:bg-white/5"
           >
             <span>Hikayemiz</span>
           </Link>
