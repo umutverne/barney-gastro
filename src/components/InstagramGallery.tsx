@@ -42,23 +42,23 @@ const images = [
 
 export default function InstagramGallery() {
   return (
-    <section id="gallery" className="py-24 lg:py-32 bg-[var(--dark-lighter)]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="gallery" className="py-16 md:py-24 lg:py-32 bg-[var(--dark-lighter)]">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <span className="inline-block text-sm font-semibold uppercase tracking-[0.2em] text-[var(--primary)] mb-4">
+        <div className="text-center mb-10 md:mb-16 animate-fade-in-up">
+          <span className="inline-block text-sm font-semibold uppercase tracking-[0.2em] text-[var(--primary)] mb-3 md:mb-4">
             @barneygastro
           </span>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
             Instagram&apos;da Biz
           </h2>
-          <p className="text-gray-400 text-lg">Anlarımızı takip edin</p>
+          <p className="text-gray-400 text-base md:text-lg">Anlarımızı takip edin</p>
         </div>
       </div>
 
       {/* Gallery Grid */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 animate-fade-in">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 animate-fade-in">
           {images.map((image, index) => (
             <a
               key={index}
@@ -88,21 +88,21 @@ export default function InstagramGallery() {
       </div>
 
       {/* CTA */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div
-          className="text-center mt-12 animate-fade-in-up"
+          className="text-center mt-8 md:mt-12 animate-fade-in-up"
           style={{ animationDelay: '400ms' }}
         >
           <a
             href="https://www.instagram.com/barneygastro/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 rounded-full font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             style={{
               background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
             }}
           >
-            <Instagram size={22} />
+            <Instagram size={20} />
             <span>Takip Et</span>
           </a>
         </div>

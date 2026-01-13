@@ -25,7 +25,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 lg:py-32 bg-[var(--dark)] overflow-hidden"
+      className="relative py-16 md:py-24 lg:py-32 bg-[var(--dark)] overflow-hidden"
     >
       {/* Static Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -33,8 +33,8 @@ export default function About() {
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-[var(--primary)]/5 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
           {/* Images */}
           <div className="relative animate-fade-in-up">
             {/* Main Image */}
@@ -79,17 +79,17 @@ export default function About() {
 
           {/* Content */}
           <div className="animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-            <span className="inline-block px-4 py-1.5 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-6">
+            <span className="inline-block px-4 py-2 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-4 md:mb-6">
               Hakkımızda
             </span>
 
-            <h2 className="font-[family-name:var(--font-playfair)] text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 md:mb-6">
               Gastronomi ve<br />
               <span className="text-[var(--primary)] italic">Pub Kültürünün</span><br />
               Buluşma Noktası
             </h2>
 
-            <p className="text-lg text-gray-400 leading-relaxed mb-10">
+            <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-8 md:mb-10">
               Barney Gastro Pub, geleneksel pub atmosferini modern gastronomi ile birleştiren
               benzersiz bir deneyim sunuyor. Özenle seçilmiş craft biralarımız,
               şeflerimizin ustalıkla hazırladığı lezzetler ve sıcak atmosferimizle
@@ -97,7 +97,7 @@ export default function About() {
             </p>
 
             {/* Features */}
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {features.map((feature, index) => (
                 <div
                   key={feature.title}

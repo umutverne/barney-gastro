@@ -51,7 +51,7 @@ export default function Menu() {
   return (
     <section
       id="menu"
-      className="relative py-24 lg:py-32 bg-[var(--dark)] overflow-hidden"
+      className="relative py-16 md:py-24 lg:py-32 bg-[var(--dark)] overflow-hidden"
     >
       {/* Static Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -59,22 +59,22 @@ export default function Menu() {
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-[var(--primary)]/5 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <span className="inline-block px-4 py-1.5 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-6">
+        <div className="text-center mb-10 md:mb-16 animate-fade-in-up">
+          <span className="inline-block px-4 py-2 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-4 md:mb-6">
             Lezzetler
           </span>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl lg:text-6xl font-bold mb-4">
+          <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-4">
             <span className="text-[var(--primary)]">Menümüz</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
             Craft biralardan gurme burgerlere, imza kokteylerden özel tatlılara kadar geniş menümüzü keşfedin
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
           {showcaseItems.map((item, index) => (
             <a
               key={item.name}
@@ -118,12 +118,12 @@ export default function Menu() {
 
         {/* CTA Buttons */}
         <div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-14 animate-fade-in-up"
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mt-10 md:mt-14 animate-fade-in-up"
           style={{ animationDelay: '400ms' }}
         >
           <Link
             href="/menu"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--primary)] text-[var(--dark)] font-semibold text-sm uppercase tracking-wider rounded-full transition-all duration-300 hover:bg-[var(--primary-light)] hover:-translate-y-1"
+            className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 bg-[var(--primary)] text-[var(--dark)] font-semibold text-sm uppercase tracking-wider rounded-full transition-all duration-300 hover:bg-[var(--primary-light)] hover:-translate-y-1"
           >
             <span>Tüm Menüyü Gör</span>
             <UtensilsCrossed size={18} />
@@ -132,10 +132,10 @@ export default function Menu() {
             href="https://www.instagram.com/barneygastro/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 border border-[var(--primary)]/30 font-semibold text-sm uppercase tracking-wider rounded-full transition-all duration-300 hover:border-[var(--primary)] hover:-translate-y-1"
+            className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 border border-[var(--primary)]/30 font-semibold text-sm uppercase tracking-wider rounded-full transition-all duration-300 hover:border-[var(--primary)] hover:-translate-y-1"
           >
             <Instagram size={18} className="text-[var(--primary)]" />
-            <span className="text-white">Instagram'da Gör</span>
+            <span className="text-white">Instagram&apos;da Gör</span>
           </a>
         </div>
       </div>

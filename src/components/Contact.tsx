@@ -24,33 +24,33 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-[var(--dark-lighter)] overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-24 lg:py-32 bg-[var(--dark-lighter)] overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--primary)]/5 rounded-full blur-[150px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Info */}
           <div className="animate-fade-in-up">
-            <span className="section-tag animate-fade-in">
+            <span className="inline-block px-4 py-2 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-4 md:mb-6">
               İletişim
             </span>
             <h2
-              className="font-[family-name:var(--font-playfair)] text-4xl lg:text-5xl font-bold mb-4 animate-fade-in-up"
+              className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 animate-fade-in-up"
               style={{ animationDelay: '100ms' }}
             >
               Bizi <span className="gradient-text">Ziyaret Edin</span>
             </h2>
             <p
-              className="text-gray-400 text-lg mb-10 animate-fade-in"
+              className="text-gray-400 text-base md:text-lg mb-8 md:mb-10 animate-fade-in"
               style={{ animationDelay: '200ms' }}
             >
               Sizleri ağırlamaktan mutluluk duyarız
             </p>
 
-            <div className="space-y-5">
+            <div className="space-y-4 md:space-y-5">
               {contactInfo.map((info, index) => {
                 const CardContent = (
                   <>
@@ -97,24 +97,24 @@ export default function Contact() {
 
             {/* Social Link - Only Instagram */}
             <div
-              className="mt-10 animate-fade-in-up"
+              className="mt-8 md:mt-10 animate-fade-in-up"
               style={{ animationDelay: '500ms' }}
             >
               <a
                 href="https://www.instagram.com/barneygastro/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3 glass-gold rounded-full hover:bg-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1"
+                className="inline-flex items-center gap-3 px-5 md:px-6 py-2.5 md:py-3 glass-gold rounded-full hover:bg-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1"
               >
-                <Instagram size={22} className="text-[var(--primary)]" />
-                <span className="text-white font-medium">@barneygastro</span>
+                <Instagram size={20} className="text-[var(--primary)]" />
+                <span className="text-white font-medium text-sm md:text-base">@barneygastro</span>
               </a>
             </div>
           </div>
 
           {/* Map */}
           <div
-            className="relative rounded-3xl overflow-hidden border border-white/10 h-[450px] lg:h-[550px] shadow-2xl animate-fade-in-up"
+            className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 h-[350px] md:h-[450px] lg:h-[550px] shadow-2xl animate-fade-in-up"
             style={{ animationDelay: '200ms' }}
           >
             {/* Map overlay gradient */}
