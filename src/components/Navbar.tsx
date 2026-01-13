@@ -74,12 +74,13 @@ export default function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="hidden lg:flex items-center">
-            <Link href="/menu">
-              <span className="group relative px-8 py-3.5 bg-[var(--primary)] text-[var(--dark)] font-semibold text-sm uppercase tracking-wider rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[var(--primary)]/30 inline-block">
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative z-10">Menüyü Gör</span>
-              </span>
+          <div className="hidden lg:flex items-center flex-shrink-0">
+            <Link
+              href="/menu"
+              className="group relative px-8 py-3.5 bg-[var(--primary)] text-[var(--dark)] font-semibold text-sm uppercase tracking-wider rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[var(--primary)]/30 whitespace-nowrap"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <span className="relative z-10">Menüyü Gör</span>
             </Link>
           </div>
 

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 const testimonials = [
@@ -9,21 +8,21 @@ const testimonials = [
     text: "Şehirdeki en iyi gastro pub deneyimi! Burger'ları muhteşem, craft bira seçenekleri çok geniş. Atmosfer harika, personel çok ilgili.",
     author: 'Ahmet Y.',
     source: 'Google Yorumu',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
+    initials: 'AY',
     rating: 5,
   },
   {
     text: 'Arkadaşlarla buluşmak için ideal bir mekan. Canlı müzik geceleri muhteşem! Espresso Martini\'leri şehrin en iyisi.',
     author: 'Zeynep K.',
     source: 'Instagram',
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    initials: 'ZK',
     rating: 5,
   },
   {
     text: "Fish & Chips'i denemeyen bilmez! Londra'da yediklerimden bile daha iyi. Bira tavsiyeleri için personele danışın, asla yanıltmazlar.",
     author: 'Can M.',
     source: 'TripAdvisor',
-    image: 'https://randomuser.me/api/portraits/men/67.jpg',
+    initials: 'CM',
     rating: 5,
   },
 ];
@@ -81,13 +80,11 @@ export default function Testimonials() {
 
             {/* Author */}
             <div className="flex items-center justify-center gap-4">
-              <Image
-                src={testimonials[current].image}
-                alt={testimonials[current].author}
-                width={60}
-                height={60}
-                className="rounded-full border-2 border-[var(--primary)]"
-              />
+              <div className="w-14 h-14 rounded-full border-2 border-[var(--primary)] bg-[var(--primary)]/20 flex items-center justify-center">
+                <span className="font-[family-name:var(--font-bebas)] text-xl text-[var(--primary)]">
+                  {testimonials[current].initials}
+                </span>
+              </div>
               <div className="text-left">
                 <h4 className="font-semibold text-lg">{testimonials[current].author}</h4>
                 <span className="text-gray-400 text-sm">{testimonials[current].source}</span>
