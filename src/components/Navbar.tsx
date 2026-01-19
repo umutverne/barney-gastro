@@ -43,13 +43,20 @@ export default function Navbar() {
           isHidden && !isMobileMenuOpen ? '-translate-y-full' : 'translate-y-0'
         } ${isScrolled ? 'glass-strong py-4' : 'py-6'}`}
       >
-        <div className="w-full px-8 sm:px-12 lg:px-16 flex items-center justify-between">
+        <div
+          className="w-full flex items-center justify-between"
+          style={{ paddingLeft: '24px', paddingRight: '24px' }}
+        >
           {/* Logo */}
-          <Link href="#home" className="flex flex-col items-start group relative">
-            <span className="font-[family-name:var(--font-bebas)] text-3xl tracking-[0.2em] text-[var(--primary)] transition-all duration-300 group-hover:text-glow group-hover:scale-105 origin-left">
+          <Link
+            href="#home"
+            className="flex flex-col items-start group relative"
+            style={{ marginLeft: '12px', marginTop: '4px' }}
+          >
+            <span className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl tracking-[0.2em] text-[var(--primary)] transition-all duration-300 group-hover:text-glow group-hover:scale-105 origin-left">
               BARNEY
             </span>
-            <span className="text-[10px] tracking-[0.4em] text-gray-400 uppercase transition-colors group-hover:text-[var(--primary)]">
+            <span className="text-[10px] md:text-xs tracking-[0.4em] text-gray-400 uppercase transition-colors group-hover:text-[var(--primary)]">
               Gastro Pub
             </span>
           </Link>
@@ -74,10 +81,19 @@ export default function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="hidden lg:flex items-center flex-shrink-0">
+          <div
+            className="hidden lg:flex items-center flex-shrink-0"
+            style={{ marginRight: '12px' }}
+          >
             <Link
               href="/menu"
-              className="group relative px-8 py-3.5 bg-[var(--primary)] text-[var(--dark)] font-semibold text-sm uppercase tracking-wider rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[var(--primary)]/30 whitespace-nowrap"
+              className="group relative text-[var(--dark)] font-semibold text-sm uppercase tracking-wider overflow-hidden transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
+              style={{
+                padding: '14px 32px',
+                background: 'linear-gradient(135deg, var(--primary) 0%, #b8922a 100%)',
+                borderRadius: '10px',
+                boxShadow: '0 4px 15px rgba(201, 162, 39, 0.3)',
+              }}
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative z-10">Menüyü Gör</span>

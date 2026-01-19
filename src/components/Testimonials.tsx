@@ -1,7 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
+import { Star, Quote } from 'lucide-react';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 
 const testimonials = [
   {
@@ -28,102 +33,224 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const next = () => setCurrent((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-[var(--dark)]">
-      <div className="max-w-4xl mx-auto px-8 md:px-12 lg:px-16">
+    <section
+      id="testimonials"
+      style={{
+        padding: '64px 0 80px 0',
+        marginTop: '32px',
+        background: 'var(--dark)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '800px',
+          height: '800px',
+          background: 'radial-gradient(circle, rgba(201, 162, 39, 0.06) 0%, transparent 60%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div
+        style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '0 24px',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <span className="inline-block px-4 py-2 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-4 md:mb-6">
+        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              padding: '8px 20px',
+              border: '1px solid rgba(201, 162, 39, 0.3)',
+              borderRadius: '50px',
+              fontSize: '11px',
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '0.2em',
+              color: 'var(--primary)',
+              marginBottom: '20px',
+            }}
+          >
             Yorumlar
           </span>
-          <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl font-bold">
-            Misafirlerimiz <span className="text-[var(--primary)]">Ne Diyor?</span>
+          <h2
+            style={{
+              fontFamily: 'var(--font-playfair)',
+              fontSize: 'clamp(28px, 5vw, 42px)',
+              fontWeight: '700',
+              color: 'white',
+            }}
+          >
+            Misafirlerimiz <span style={{ color: 'var(--primary)' }}>Ne Diyor?</span>
           </h2>
         </div>
 
-        {/* Testimonials Slider - Fixed Height */}
-        <div className="relative px-4 md:px-8">
-          <div className="bg-[var(--dark-lighter)] rounded-2xl md:rounded-3xl p-6 md:p-10 lg:p-12 border border-white/5 text-center relative min-h-[320px] md:min-h-[280px] flex flex-col justify-center">
-            {/* Quote Icon */}
-            <Quote
-              size={40}
-              className="absolute top-4 left-4 md:top-6 md:left-6 text-[var(--primary)]/20"
-            />
-
-            {/* Stars */}
-            <div className="flex justify-center gap-1 mb-6 md:mb-8">
-              {[...Array(testimonials[current].rating)].map((_, i) => (
-                <Star
-                  key={i}
-                  size={20}
-                  className="fill-[var(--primary)] text-[var(--primary)]"
+        {/* Swiper */}
+        <Swiper
+          modules={[Autoplay, Pagination, EffectFade]}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+            bulletClass: 'testimonial-bullet',
+            bulletActiveClass: 'testimonial-bullet-active',
+          }}
+          loop={true}
+          style={{ paddingBottom: '48px' }}
+        >
+          {testimonials.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div
+                style={{
+                  background: 'linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%)',
+                  border: '1px solid rgba(201, 162, 39, 0.12)',
+                  borderRadius: '20px',
+                  padding: '48px 40px',
+                  position: 'relative',
+                  boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
+                }}
+              >
+                {/* Quote Icon */}
+                <Quote
+                  size={40}
+                  style={{
+                    position: 'absolute',
+                    top: '24px',
+                    left: '28px',
+                    color: 'rgba(201, 162, 39, 0.12)',
+                  }}
                 />
-              ))}
-            </div>
 
-            {/* Text - Fixed Height Container */}
-            <div className="min-h-[100px] md:min-h-[80px] flex items-center justify-center mb-6 md:mb-8">
-              <p className="font-[family-name:var(--font-playfair)] text-lg md:text-xl lg:text-2xl italic leading-relaxed relative z-10 px-2">
-                &ldquo;{testimonials[current].text}&rdquo;
-              </p>
-            </div>
+                {/* Stars */}
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '4px',
+                    marginBottom: '24px',
+                  }}
+                >
+                  {[...Array(item.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={18}
+                      fill="var(--primary)"
+                      color="var(--primary)"
+                    />
+                  ))}
+                </div>
 
-            {/* Author */}
-            <div className="flex items-center justify-center gap-3 md:gap-4">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-[var(--primary)] bg-[var(--primary)]/20 flex items-center justify-center flex-shrink-0">
-                <span className="font-[family-name:var(--font-bebas)] text-lg md:text-xl text-[var(--primary)]">
-                  {testimonials[current].initials}
-                </span>
+                {/* Text */}
+                <p
+                  style={{
+                    fontFamily: 'var(--font-playfair)',
+                    fontSize: 'clamp(16px, 2.5vw, 20px)',
+                    fontStyle: 'italic',
+                    lineHeight: '1.8',
+                    color: 'rgba(255,255,255,0.9)',
+                    textAlign: 'center',
+                    marginBottom: '32px',
+                    minHeight: '80px',
+                  }}
+                >
+                  &ldquo;{item.text}&rdquo;
+                </p>
+
+                {/* Author */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '14px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.1) 100%)',
+                      border: '2px solid var(--primary)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-bebas)',
+                        fontSize: '16px',
+                        color: 'var(--primary)',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      {item.initials}
+                    </span>
+                  </div>
+                  <div>
+                    <h4
+                      style={{
+                        fontWeight: '600',
+                        fontSize: '15px',
+                        color: 'white',
+                        marginBottom: '2px',
+                      }}
+                    >
+                      {item.author}
+                    </h4>
+                    <span
+                      style={{
+                        fontSize: '13px',
+                        color: 'rgba(156, 163, 175, 1)',
+                      }}
+                    >
+                      {item.source}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className="text-left">
-                <h4 className="font-semibold text-base md:text-lg">{testimonials[current].author}</h4>
-                <span className="text-gray-400 text-xs md:text-sm">{testimonials[current].source}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Buttons - Better Mobile Position */}
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-[var(--dark-lighter)] border border-white/10 rounded-full flex items-center justify-center text-white hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors z-10"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-[var(--dark-lighter)] border border-white/10 rounded-full flex items-center justify-center text-white hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors z-10"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
-
-        {/* Dots */}
-        <div className="flex justify-center gap-3 mt-6 md:mt-8">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-colors duration-300 ${
-                index === current
-                  ? 'bg-[var(--primary)]'
-                  : 'bg-gray-600 hover:bg-gray-500'
-              }`}
-            />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
+
+      {/* Custom Swiper Styles */}
+      <style jsx global>{`
+        .testimonial-bullet {
+          width: 10px;
+          height: 10px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 5px;
+          display: inline-block;
+          margin: 0 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .testimonial-bullet-active {
+          background: var(--primary);
+          width: 28px;
+        }
+        .swiper-pagination {
+          bottom: 0 !important;
+        }
+      `}</style>
     </section>
   );
 }

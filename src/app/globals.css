@@ -420,3 +420,444 @@ main, section, div {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Custom spacing utilities */
+.ml-20px {
+  margin-left: 12px;
+}
+
+.mr-20px {
+  margin-right: 12px;
+}
+
+.mt-8px {
+  margin-top: 2px;
+}
+
+.nav-button {
+  padding: 12px 28px;
+}
+
+/* Section padding - simple consistent values */
+.section-padding {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+/* Professional Button Styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: transparent;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(201, 162, 39, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Text Center Fix */
+.text-center-fix {
+  text-align: center !important;
+}
+
+/* Menu Grid Gap */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Card with better spacing */
+.menu-card {
+  position: relative;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--dark-lighter);
+}
+
+.menu-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+/* Testimonial Card Improved */
+.testimonial-card {
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(13, 13, 13, 0.98) 100%);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+  border-radius: 24px;
+  padding: 40px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .testimonial-card {
+    padding: 48px 56px;
+  }
+}
+
+/* Contact Section Improved */
+.contact-card {
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.9) 0%, rgba(13, 13, 13, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+  transform: translateX(8px);
+}
+
+.contact-icon {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+}
+
+/* Fix for max-w-7xl equivalent */
+.container-7xl {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.container-4xl {
+  max-width: 896px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.container-5xl {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* =====================================================
+   ACCESSIBILITY IMPROVEMENTS
+   ===================================================== */
+
+/* Focus Indicators - WCAG 2.1 AA Compliant */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to main content link (screen readers) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: var(--dark);
+  padding: 8px 16px;
+  z-index: 100;
+  font-weight: 600;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Better color contrast for gray text - WCAG AA */
+.text-gray-accessible {
+  color: #9ca3af; /* 4.5:1 contrast ratio */
+}
+
+.text-gray-accessible-light {
+  color: #b0b7c3; /* 5.5:1 contrast ratio */
+}
+
+/* Button focus states */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 3px;
+}
+
+/* Link focus states */
+a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Interactive elements should have visible focus */
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.2);
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-marquee,
+  .animate-scroll-bounce {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary: #d4af37;
+    --primary-light: #f0d060;
+  }
+
+  .glass,
+  .glass-strong,
+  .glass-gold,
+  .glass-card {
+    background: var(--dark);
+    border-width: 2px;
+  }
+}
+
+/* =====================================================
+   TYPOGRAPHY CONSISTENCY
+   ===================================================== */
+
+/* Consistent heading styles */
+.heading-xl {
+  font-family: var(--font-playfair);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-lg {
+  font-family: var(--font-playfair);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heading-md {
+  font-family: var(--font-playfair);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.heading-sm {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Body text consistency */
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(156, 163, 175, 1);
+}
+
+.body-md {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(156, 163, 175, 1);
+}
+
+.body-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(156, 163, 175, 1);
+}
+
+/* Section badge/tag consistency */
+.section-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+/* =====================================================
+   SPACING SYSTEM - Consistent values
+   ===================================================== */
+
+/* Section vertical spacing */
+.section-spacing {
+  padding-top: 64px;
+  padding-bottom: 80px;
+  margin-top: 32px;
+}
+
+.section-spacing-sm {
+  padding-top: 48px;
+  padding-bottom: 64px;
+  margin-top: 24px;
+}
+
+/* Gap utilities */
+.gap-section {
+  gap: 48px;
+}
+
+.gap-cards {
+  gap: 24px;
+}
+
+.gap-items {
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .gap-section {
+    gap: 64px;
+  }
+
+  .gap-cards {
+    gap: 32px;
+  }
+}
+
+/* =====================================================
+   PERFORMANCE - will-change hints
+   ===================================================== */
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* GPU acceleration for animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}

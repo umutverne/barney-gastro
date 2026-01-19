@@ -28,14 +28,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 sm:px-8 max-w-5xl mx-auto animate-fade-in-up">
-        {/* Badge */}
-        <div className="inline-block mb-10 animate-fade-in" style={{ animationDelay: '200ms' }}>
-          <span className="px-8 py-3 border border-[var(--primary)] rounded-full font-[family-name:var(--font-bebas)] text-sm tracking-[0.3em] text-[var(--primary)]">
-            EST. 2020
-          </span>
-        </div>
-
+      <div className="relative z-10 text-center section-padding max-w-5xl mx-auto animate-fade-in-up">
         {/* Title */}
         <h1
           className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8 animate-fade-in-up"
@@ -55,19 +48,35 @@ export default function Hero() {
 
         {/* Buttons */}
         <div
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up"
-          style={{ animationDelay: '800ms' }}
+          className="flex flex-col sm:flex-row justify-center items-center animate-fade-in-up"
+          style={{ gap: '20px', animationDelay: '800ms' }}
         >
           <Link
             href="#menu"
-            className="group inline-flex items-center justify-center gap-4 px-12 py-5 min-w-[220px] bg-[var(--primary)] text-[var(--dark)] font-bold text-sm uppercase tracking-wider rounded-xl transition-all duration-300 hover:bg-[var(--primary-light)] hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--primary)]/30"
+            className="group inline-flex items-center justify-center text-[var(--dark)] font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:-translate-y-1"
+            style={{
+              gap: '12px',
+              padding: '18px 40px',
+              background: 'linear-gradient(135deg, var(--primary) 0%, #b8922a 100%)',
+              borderRadius: '14px',
+              boxShadow: '0 8px 30px rgba(201, 162, 39, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
+              border: '1px solid rgba(255,255,255,0.1)',
+            }}
           >
             <span>Menüyü Keşfet</span>
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
             href="#about"
-            className="inline-flex items-center justify-center gap-3 px-12 py-5 min-w-[180px] border-2 border-white/60 text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all duration-300 hover:border-[var(--primary)] hover:text-[var(--primary)] hover:bg-white/5"
+            className="inline-flex items-center justify-center text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:text-[var(--primary)] hover:-translate-y-1"
+            style={{
+              gap: '12px',
+              padding: '18px 40px',
+              background: 'rgba(255,255,255,0.05)',
+              borderRadius: '14px',
+              border: '2px solid rgba(255,255,255,0.2)',
+              backdropFilter: 'blur(10px)',
+            }}
           >
             <span>Hikayemiz</span>
           </Link>

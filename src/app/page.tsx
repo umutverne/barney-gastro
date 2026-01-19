@@ -14,7 +14,10 @@ import FloatingButtons from '@/components/FloatingButtons';
 export default function Home() {
   return (
     <PageWrapper>
-      <main className="min-h-screen">
+      <a href="#about" className="skip-link">
+        İçeriğe Atla
+      </a>
+      <main id="main-content" className="min-h-screen">
         <Navbar />
         <Hero />
         <Marquee />

@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Barney Gastro - Restoran Web Sitesi
 
-## Getting Started
+Modern, şık ve tamamen responsive bir restoran/gastro bar web sitesi.
 
-First, run the development server:
+## Özellikler
+
+- Modern ve premium tasarım
+- Mobil uyumlu (responsive) arayüz
+- Animasyonlu geçişler ve efektler
+- Kategori bazlı menü sistemi
+- İletişim formu ve rezervasyon bölümü
+- Instagram entegrasyonu
+- Google Maps entegrasyonu
+- SEO optimizasyonu
+
+## Teknolojiler
+
+- **Next.js 16** - React framework
+- **React 19** - UI library
+- **Tailwind CSS 4** - Styling
+- **TypeScript** - Type safety
+- **Lucide Icons** - Icon library
+- **Swiper.js** - Slider/carousel
+
+## Kurulum
 
 ```bash
+# Bağımlılıkları yükle
+npm install
+
+# Geliştirme sunucusunu başlat
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Production build oluştur
+npm run build
+
+# Production sunucusunu başlat
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Yapı
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── page.tsx        # Ana sayfa
+│   ├── menu/           # Menü sayfası
+│   ├── layout.tsx      # Root layout
+│   └── globals.css     # Global stiller
+├── components/
+│   ├── Hero.tsx        # Hero bölümü
+│   ├── About.tsx       # Hakkımızda
+│   ├── Menu.tsx        # Menü önizleme
+│   ├── Testimonials.tsx # Yorumlar
+│   ├── Contact.tsx     # İletişim
+│   ├── Reservation.tsx # Rezervasyon
+│   ├── Footer.tsx      # Footer
+│   └── ...
+└── data/
+    └── menuData.ts     # Menü verileri
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Site Vercel üzerinde deploy edilmektedir. `vercel --prod` komutu ile production'a deploy edilebilir.
 
-To learn more about Next.js, take a look at the following resources:
+## Lisans
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Tüm hakları saklıdır.

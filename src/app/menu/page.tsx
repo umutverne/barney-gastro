@@ -1,8 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Home, Search, X } from 'lucide-react';
+import {
+  Home, Search, X, Snowflake, Flame, Beef, UtensilsCrossed,
+  Salad, Pizza, ChefHat, Cake, Beer, Wine, Martini,
+  GlassWater, Sparkles, Coffee
+} from 'lucide-react';
+
+// Kategori ikonları
+const categoryIcons: Record<string, React.ReactNode> = {
+  'Soğuk Lezzetler': <Snowflake size={18} />,
+  'Sıcak Atıştırmalıklar': <Flame size={18} />,
+  'Burgerler': <Beef size={18} />,
+  'Makarnalar': <UtensilsCrossed size={18} />,
+  'Salatalar': <Salad size={18} />,
+  'Pizzalar': <Pizza size={18} />,
+  'Ana Yemekler': <ChefHat size={18} />,
+  'Tatlılar': <Cake size={18} />,
+  'Yerli Biralar': <Beer size={18} />,
+  'İthal Biralar': <Beer size={18} />,
+  'Fıçı Biralar': <Beer size={18} />,
+  'Klasik Kokteyller': <Martini size={18} />,
+  'Barney Kokteyller': <Sparkles size={18} />,
+  'Cinler': <Wine size={18} />,
+  'Votkalar': <Wine size={18} />,
+  'Viskiler': <Wine size={18} />,
+  'Shotlar': <Coffee size={18} />,
+  'Şaraplar': <Wine size={18} />,
+  'Alkolsüz': <GlassWater size={18} />,
+};
 
 // Menü verileri
 const menuData: Record<string, Array<{ name: string; description: string; price: string }>> = {
@@ -161,9 +188,20 @@ const menuData: Record<string, Array<{ name: string; description: string; price:
 
 const categories = Object.keys(menuData);
 
+// Kategori grupları
+const categoryGroups = {
+  'Yemekler': ['Soğuk Lezzetler', 'Sıcak Atıştırmalıklar', 'Burgerler', 'Makarnalar', 'Salatalar', 'Pizzalar', 'Ana Yemekler', 'Tatlılar'],
+  'İçecekler': ['Yerli Biralar', 'İthal Biralar', 'Fıçı Biralar', 'Klasik Kokteyller', 'Barney Kokteyller', 'Cinler', 'Votkalar', 'Viskiler', 'Shotlar', 'Şaraplar', 'Alkolsüz'],
+};
+
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const filteredItems = searchTerm
     ? Object.entries(menuData).flatMap(([category, items]) =>
@@ -177,45 +215,122 @@ export default function MenuPage() {
     : null;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%)', overflowX: 'hidden' }}>
       {/* Header */}
-      <header className="bg-[#0a0a0a] border-b border-[#1a1a1a]">
-        <div className="max-w-6xl mx-auto px-6 md:px-8 py-5 md:py-6">
-          <div className="flex items-center justify-between">
+      <header
+        style={{
+          background: 'linear-gradient(180deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.95) 100%)',
+          borderBottom: '1px solid rgba(201, 162, 39, 0.1)',
+          backdropFilter: 'blur(20px)',
+        }}
+      >
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Link
               href="/"
-              className="flex items-center gap-3 text-zinc-500 hover:text-[#c9a227] transition-colors duration-200 px-3 py-2 -ml-3"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                color: 'rgba(161, 161, 170, 1)',
+                textDecoration: 'none',
+                padding: '8px 16px',
+                marginLeft: '-16px',
+                borderRadius: '8px',
+                transition: 'all 0.2s ease',
+              }}
+              className="hover:text-[#c9a227] hover:bg-[#c9a227]/10"
             >
-              <Home size={20} />
-              <span className="hidden sm:inline text-sm">Ana Sayfa</span>
+              <Home size={18} />
+              <span style={{ fontSize: '14px', fontWeight: '500' }}>Ana Sayfa</span>
             </Link>
-            <div className="text-center">
-              <h1 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl tracking-[0.3em] text-[#c9a227]">
+
+            <div style={{ textAlign: 'center' }}>
+              <h1
+                className="font-[family-name:var(--font-bebas)]"
+                style={{
+                  fontSize: 'clamp(28px, 5vw, 40px)',
+                  letterSpacing: '0.25em',
+                  color: '#c9a227',
+                  lineHeight: 1,
+                }}
+              >
                 BARNEY
               </h1>
-              <p className="text-[10px] text-zinc-600 uppercase tracking-[0.4em]">Gastro Pub</p>
+              <p style={{
+                fontSize: '10px',
+                color: 'rgba(113, 113, 122, 1)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.35em',
+                marginTop: '4px',
+              }}>
+                Gastro Pub Menu
+              </p>
             </div>
-            <div className="w-24" />
+
+            <div style={{ width: '100px' }} />
           </div>
         </div>
       </header>
 
       {/* Search - Sticky */}
-      <div className="bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#1a1a1a] sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 md:px-8 py-4">
-          <div className="relative max-w-md mx-auto md:mx-0">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-600" size={18} />
+      <div
+        style={{
+          background: 'rgba(10,10,10,0.95)',
+          backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(255,255,255,0.05)',
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
+        }}
+      >
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px 24px' }}>
+          <div style={{ position: 'relative', maxWidth: '400px' }}>
+            <Search
+              style={{
+                position: 'absolute',
+                left: '16px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: 'rgba(113, 113, 122, 1)',
+              }}
+              size={18}
+            />
             <input
               type="text"
               placeholder="Menüde ara..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-[#111] border border-[#222] rounded-lg py-2.5 pl-10 pr-10 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-[#c9a227]/50 transition-colors duration-200"
+              style={{
+                width: '100%',
+                background: 'rgba(26, 26, 26, 0.8)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '12px',
+                padding: '14px 44px',
+                color: 'white',
+                fontSize: '14px',
+                outline: 'none',
+                transition: 'all 0.2s ease',
+              }}
+              className="placeholder:text-zinc-600 focus:border-[#c9a227]/50 focus:bg-[#1a1a1a]"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-600 hover:text-white transition-colors duration-200"
+                style={{
+                  position: 'absolute',
+                  right: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'rgba(113, 113, 122, 1)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  borderRadius: '4px',
+                  transition: 'color 0.2s ease',
+                }}
+                className="hover:text-white"
               >
                 <X size={16} />
               </button>
@@ -224,24 +339,67 @@ export default function MenuPage() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', overflow: 'hidden' }}>
         {searchTerm ? (
           /* Search Results */
-          <div className="px-4 py-6">
-            <p className="text-zinc-500 text-sm mb-6">{filteredItems?.length || 0} sonuç bulundu</p>
-            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          <div style={{ padding: '24px' }}>
+            <p style={{ color: 'rgba(113, 113, 122, 1)', fontSize: '14px', marginBottom: '24px' }}>
+              <span style={{ color: '#c9a227', fontWeight: '600' }}>{filteredItems?.length || 0}</span> sonuç bulundu
+            </p>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                gap: '16px',
+              }}
+            >
               {filteredItems?.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-[#111] rounded-xl p-4 border border-[#1a1a1a] hover:border-[#c9a227]/30 transition-colors duration-200"
+                  className={`${isLoaded ? 'animate-fade-in-up' : ''} hover:border-[#c9a227]/30 hover:-translate-y-1`}
+                  style={{
+                    background: 'linear-gradient(145deg, rgba(26, 26, 26, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%)',
+                    borderRadius: '16px',
+                    padding: '20px',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    transition: 'all 0.3s ease',
+                    animationDelay: `${index * 50}ms`,
+                  }}
                 >
-                  <span className="text-[10px] text-[#c9a227] uppercase tracking-wider font-medium">{item.category}</span>
-                  <div className="flex justify-between items-start mt-2">
-                    <div className="flex-1 pr-4">
-                      <h3 className="text-white font-medium">{item.name}</h3>
-                      <p className="text-zinc-500 text-sm mt-1">{item.description}</p>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    marginBottom: '12px',
+                  }}>
+                    <span style={{ color: '#c9a227' }}>{categoryIcons[item.category]}</span>
+                    <span style={{
+                      fontSize: '11px',
+                      color: '#c9a227',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.1em',
+                      fontWeight: '600',
+                    }}>
+                      {item.category}
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div style={{ flex: 1, paddingRight: '16px' }}>
+                      <h3 style={{ color: 'white', fontWeight: '600', fontSize: '16px', marginBottom: '6px' }}>
+                        {item.name}
+                      </h3>
+                      <p style={{ color: 'rgba(161, 161, 170, 1)', fontSize: '13px', lineHeight: '1.5' }}>
+                        {item.description}
+                      </p>
                     </div>
-                    <span className="text-[#c9a227] font-semibold text-lg">₺{item.price}</span>
+                    <div style={{
+                      background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(201, 162, 39, 0.05) 100%)',
+                      borderRadius: '10px',
+                      padding: '8px 14px',
+                      border: '1px solid rgba(201, 162, 39, 0.2)',
+                    }}>
+                      <span style={{ color: '#c9a227', fontWeight: '700', fontSize: '16px' }}>₺{item.price}</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -249,73 +407,220 @@ export default function MenuPage() {
           </div>
         ) : (
           /* Category View */
-          <div className="flex flex-col md:flex-row">
-            {/* Category Sidebar - Mobile: Horizontal Scroll, Desktop: Vertical */}
-            <div className="md:w-48 lg:w-56 shrink-0 border-b md:border-b-0 md:border-r border-[#1a1a1a]">
-              {/* Mobile Categories */}
-              <div className="md:hidden overflow-x-auto">
-                <div className="flex gap-2 p-3">
+          <div style={{ display: 'flex' }} className="flex-col md:flex-row">
+            {/* Category Sidebar */}
+            <div
+              style={{
+                flexShrink: 0,
+                borderRight: '1px solid rgba(255,255,255,0.05)',
+              }}
+              className="w-full md:w-56 lg:w-64"
+            >
+              {/* Mobile Categories - Horizontal Scroll */}
+              <div className="md:hidden" style={{ overflowX: 'auto', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ display: 'flex', gap: '8px', padding: '12px 16px' }}>
                   {categories.map((category) => (
                     <button
                       key={category}
                       onClick={() => setActiveCategory(category)}
-                      className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-                        activeCategory === category
-                          ? 'bg-[#c9a227] text-black'
-                          : 'bg-[#111] text-zinc-400 hover:text-white border border-[#222]'
-                      }`}
+                      style={{
+                        flexShrink: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        padding: '10px 16px',
+                        borderRadius: '10px',
+                        fontSize: '13px',
+                        fontWeight: '500',
+                        transition: 'all 0.2s ease',
+                        background: activeCategory === category
+                          ? 'linear-gradient(135deg, #c9a227 0%, #b8922a 100%)'
+                          : 'rgba(26, 26, 26, 0.8)',
+                        color: activeCategory === category ? '#0a0a0a' : 'rgba(161, 161, 170, 1)',
+                        border: activeCategory === category
+                          ? 'none'
+                          : '1px solid rgba(255,255,255,0.08)',
+                      }}
                     >
-                      {category}
+                      {categoryIcons[category]}
+                      <span>{category}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Desktop Categories */}
-              <div className="hidden md:block md:sticky md:top-[62px] h-[calc(100vh-130px)] overflow-y-auto py-4">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`w-full text-left px-4 py-3 text-sm transition-all duration-200 border-l-2 ${
-                      activeCategory === category
-                        ? 'bg-[#c9a227]/10 text-[#c9a227] border-l-[#c9a227] font-medium'
-                        : 'text-zinc-400 hover:text-white hover:bg-[#111] border-l-transparent'
-                    }`}
-                  >
-                    {category}
-                  </button>
+              {/* Desktop Categories - Grouped */}
+              <div
+                className="hidden md:block"
+                style={{
+                  position: 'sticky',
+                  top: '70px',
+                  height: 'calc(100vh - 150px)',
+                  overflowY: 'auto',
+                  padding: '20px 0',
+                }}
+              >
+                {Object.entries(categoryGroups).map(([groupName, groupCategories]) => (
+                  <div key={groupName} style={{ marginBottom: '24px' }}>
+                    <h3 style={{
+                      fontSize: '11px',
+                      fontWeight: '700',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.15em',
+                      color: 'rgba(113, 113, 122, 1)',
+                      padding: '0 20px',
+                      marginBottom: '12px',
+                    }}>
+                      {groupName}
+                    </h3>
+                    {groupCategories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => setActiveCategory(category)}
+                        style={{
+                          width: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '12px',
+                          padding: '12px 20px',
+                          fontSize: '14px',
+                          textAlign: 'left',
+                          transition: 'all 0.2s ease',
+                          background: activeCategory === category
+                            ? 'linear-gradient(90deg, rgba(201, 162, 39, 0.15) 0%, transparent 100%)'
+                            : 'transparent',
+                          color: activeCategory === category ? '#c9a227' : 'rgba(161, 161, 170, 1)',
+                          borderLeft: activeCategory === category
+                            ? '3px solid #c9a227'
+                            : '3px solid transparent',
+                          fontWeight: activeCategory === category ? '600' : '400',
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                        className="hover:bg-[#1a1a1a]/50 hover:text-white"
+                      >
+                        <span style={{
+                          opacity: activeCategory === category ? 1 : 0.6,
+                          transition: 'opacity 0.2s ease',
+                        }}>
+                          {categoryIcons[category]}
+                        </span>
+                        <span>{category}</span>
+                      </button>
+                    ))}
+                  </div>
                 ))}
               </div>
             </div>
 
             {/* Menu Items */}
-            <div className="flex-1 p-4 md:p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-xl md:text-2xl font-semibold text-white">
-                  {activeCategory}
-                </h2>
-                <span className="text-xs text-zinc-600 bg-[#111] px-2 py-1 rounded-full border border-[#222]">
-                  {menuData[activeCategory].length} ürün
-                </span>
+            <div style={{ flex: 1, minWidth: 0, padding: '24px' }} className="md:p-8">
+              {/* Category Header */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  marginBottom: '32px',
+                  paddingBottom: '20px',
+                  borderBottom: '1px solid rgba(255,255,255,0.06)',
+                }}
+              >
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '14px',
+                  background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.1) 100%)',
+                  border: '1px solid rgba(201, 162, 39, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#c9a227',
+                }}>
+                  {categoryIcons[activeCategory]}
+                </div>
+                <div>
+                  <h2
+                    className="font-[family-name:var(--font-playfair)]"
+                    style={{
+                      fontSize: 'clamp(24px, 4vw, 32px)',
+                      fontWeight: '700',
+                      color: 'white',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {activeCategory}
+                  </h2>
+                  <span style={{
+                    fontSize: '13px',
+                    color: 'rgba(113, 113, 122, 1)',
+                  }}>
+                    {menuData[activeCategory].length} ürün
+                  </span>
+                </div>
               </div>
 
-              {/* Grid for larger screens, list for mobile */}
-              <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {/* Items Grid */}
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                  gap: '16px',
+                }}
+              >
                 {menuData[activeCategory].map((item, index) => (
                   <div
                     key={index}
-                    className="group bg-[#111] rounded-xl p-4 border border-[#1a1a1a] hover:border-[#c9a227]/30 transition-colors duration-200"
+                    className={`group ${isLoaded ? 'animate-fade-in-up' : ''}`}
+                    style={{
+                      background: 'linear-gradient(145deg, rgba(26, 26, 26, 0.8) 0%, rgba(18, 18, 18, 0.9) 100%)',
+                      borderRadius: '16px',
+                      padding: '20px',
+                      border: '1px solid rgba(255,255,255,0.06)',
+                      transition: 'all 0.3s ease',
+                      animationDelay: `${index * 30}ms`,
+                      cursor: 'default',
+                    }}
                   >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1 pr-3 min-w-0">
-                        <h3 className="text-white font-medium group-hover:text-[#c9a227] transition-colors duration-200">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <div style={{ flex: 1, paddingRight: '16px' }}>
+                        <h3
+                          style={{
+                            color: 'white',
+                            fontWeight: '600',
+                            fontSize: '16px',
+                            marginBottom: '8px',
+                            transition: 'color 0.2s ease',
+                          }}
+                          className="group-hover:text-[#c9a227]"
+                        >
                           {item.name}
                         </h3>
-                        <p className="text-zinc-500 text-sm mt-1">{item.description}</p>
+                        <p style={{
+                          color: 'rgba(161, 161, 170, 1)',
+                          fontSize: '13px',
+                          lineHeight: '1.6',
+                        }}>
+                          {item.description}
+                        </p>
                       </div>
-                      <div className="shrink-0 text-right">
-                        <span className="text-[#c9a227] font-semibold text-lg">₺{item.price}</span>
+                      <div style={{
+                        background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.12) 0%, rgba(201, 162, 39, 0.05) 100%)',
+                        borderRadius: '10px',
+                        padding: '10px 16px',
+                        border: '1px solid rgba(201, 162, 39, 0.15)',
+                        transition: 'all 0.3s ease',
+                      }}
+                      className="group-hover:border-[#c9a227]/40 group-hover:bg-[#c9a227]/15"
+                      >
+                        <span style={{
+                          color: '#c9a227',
+                          fontWeight: '700',
+                          fontSize: '17px',
+                          fontFamily: 'var(--font-inter)',
+                        }}>
+                          ₺{item.price}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -327,11 +632,51 @@ export default function MenuPage() {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-[#1a1a1a] mt-8 py-4">
-        <p className="text-center text-zinc-600 text-xs">
-          Fiyatlara KDV dahildir. Menü güncellenebilir.
-        </p>
-      </div>
+      <footer
+        style={{
+          borderTop: '1px solid rgba(255,255,255,0.05)',
+          marginTop: '48px',
+          padding: '24px',
+          background: 'rgba(10,10,10,0.5)',
+        }}
+      >
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '12px',
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: 'rgba(113, 113, 122, 1)',
+            fontSize: '12px',
+          }}>
+            <span style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: '#c9a227',
+              opacity: 0.6,
+            }} />
+            <span>Fiyatlara KDV dahildir</span>
+            <span style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: '#c9a227',
+              opacity: 0.6,
+            }} />
+            <span>Menü güncellenebilir</span>
+          </div>
+          <p style={{ color: 'rgba(82, 82, 91, 1)', fontSize: '11px' }}>
+            © 2025 Barney Gastro Pub
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -7,17 +7,17 @@ import { Instagram, UtensilsCrossed } from 'lucide-react';
 const showcaseItems = [
   {
     name: 'Burgerler',
-    price: '₺350 - ₺420',
+    price: '₺475 - ₺520',
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=500&fit=crop',
   },
   {
     name: 'Pizzalar',
-    price: '₺400 - ₺500',
+    price: '₺500 - ₺620',
     image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=500&fit=crop',
   },
   {
-    name: 'Steakler',
-    price: '₺450 - ₺650',
+    name: 'Ana Yemekler',
+    price: '₺500 - ₺850',
     image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&h=500&fit=crop',
   },
   {
@@ -27,7 +27,7 @@ const showcaseItems = [
   },
   {
     name: 'Atıştırmalıklar',
-    price: '₺250 - ₺420',
+    price: '₺290 - ₺600',
     image: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=500&h=500&fit=crop',
   },
   {
@@ -37,7 +37,7 @@ const showcaseItems = [
   },
   {
     name: 'Craft Biralar',
-    price: '₺190 - ₺375',
+    price: '₺110 - ₺375',
     image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=500&fit=crop',
   },
   {
@@ -51,7 +51,12 @@ export default function Menu() {
   return (
     <section
       id="menu"
-      className="relative py-16 md:py-24 lg:py-32 bg-[var(--dark)] overflow-hidden"
+      className="relative overflow-hidden"
+      style={{
+        padding: '64px 0 80px 0',
+        marginTop: '24px',
+        background: 'var(--dark)',
+      }}
     >
       {/* Static Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -59,22 +64,34 @@ export default function Menu() {
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-[var(--primary)]/5 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+      <div className="max-w-7xl mx-auto section-padding">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16 animate-fade-in-up">
-          <span className="inline-block px-4 py-2 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-4 md:mb-6">
+        <div className="animate-fade-in-up" style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <span
+            className="inline-block border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)]"
+            style={{ padding: '8px 20px', marginBottom: '24px', display: 'inline-block' }}
+          >
             Lezzetler
           </span>
-          <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-4">
+          <h2
+            className="font-[family-name:var(--font-playfair)] font-bold"
+            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: '16px', textAlign: 'center' }}
+          >
             <span className="text-[var(--primary)]">Menümüz</span>
           </h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+          <p
+            className="text-gray-400"
+            style={{ fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto', lineHeight: '1.7' }}
+          >
             Craft biralardan gurme burgerlere, imza kokteylerden özel tatlılara kadar geniş menümüzü keşfedin
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+        <div
+          className="grid grid-cols-2 md:grid-cols-4"
+          style={{ gap: '16px' }}
+        >
           {showcaseItems.map((item, index) => (
             <a
               key={item.name}
@@ -118,12 +135,17 @@ export default function Menu() {
 
         {/* CTA Buttons */}
         <div
-          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mt-10 md:mt-14 animate-fade-in-up"
-          style={{ animationDelay: '400ms' }}
+          className="flex flex-col sm:flex-row justify-center items-center animate-fade-in-up"
+          style={{ gap: '16px', marginTop: '48px', animationDelay: '400ms' }}
         >
           <Link
             href="/menu"
-            className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 bg-[var(--primary)] text-[var(--dark)] font-semibold text-sm uppercase tracking-wider rounded-full transition-all duration-300 hover:bg-[var(--primary-light)] hover:-translate-y-1"
+            className="btn-primary"
+            style={{
+              padding: '16px 36px',
+              borderRadius: '12px',
+              boxShadow: '0 4px 20px rgba(201, 162, 39, 0.3)',
+            }}
           >
             <span>Tüm Menüyü Gör</span>
             <UtensilsCrossed size={18} />
@@ -132,7 +154,12 @@ export default function Menu() {
             href="https://www.instagram.com/barneygastro/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 border border-[var(--primary)]/30 font-semibold text-sm uppercase tracking-wider rounded-full transition-all duration-300 hover:border-[var(--primary)] hover:-translate-y-1"
+            className="btn-secondary"
+            style={{
+              padding: '16px 36px',
+              borderRadius: '12px',
+              border: '2px solid rgba(201, 162, 39, 0.4)',
+            }}
           >
             <Instagram size={18} className="text-[var(--primary)]" />
             <span className="text-white">Instagram&apos;da Gör</span>

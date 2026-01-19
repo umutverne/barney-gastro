@@ -33,7 +33,7 @@ export default function About() {
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-[var(--primary)]/5 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+      <div className="max-w-7xl mx-auto section-padding">
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
           {/* Images */}
           <div className="relative animate-fade-in-up">
@@ -44,7 +44,7 @@ export default function About() {
                 alt="Barney Gastro Pub İç Mekan"
                 width={600}
                 height={500}
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[350px] md:h-[450px] lg:h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
@@ -65,13 +65,18 @@ export default function About() {
 
             {/* Experience Badge */}
             <div
-              className="absolute top-8 -left-4 bg-[var(--dark-lighter)] border border-[var(--primary)]/30 px-6 py-5 rounded-2xl shadow-lg animate-fade-in"
-              style={{ animationDelay: '300ms' }}
+              className="absolute bg-[var(--dark-lighter)] border border-[var(--primary)]/30 rounded-2xl shadow-lg animate-fade-in"
+              style={{
+                animationDelay: '300ms',
+                top: '16px',
+                left: '16px',
+                padding: '16px 20px',
+              }}
             >
-              <span className="font-[family-name:var(--font-bebas)] text-5xl block leading-none text-[var(--primary)]">
+              <span className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl block leading-none text-[var(--primary)]">
                 5+
               </span>
-              <span className="text-sm font-semibold uppercase tracking-wider text-white/80">
+              <span className="text-xs md:text-sm font-semibold uppercase tracking-wider text-white/80">
                 Yıllık Deneyim
               </span>
             </div>
@@ -79,17 +84,26 @@ export default function About() {
 
           {/* Content */}
           <div className="animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-            <span className="inline-block px-4 py-2 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-4 md:mb-6">
+            <span
+              className="inline-block border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)]"
+              style={{ padding: '8px 20px', marginBottom: '20px', display: 'inline-block' }}
+            >
               Hakkımızda
             </span>
 
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 md:mb-6">
+            <h2
+              className="font-[family-name:var(--font-playfair)] font-bold leading-tight"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '24px' }}
+            >
               Gastronomi ve<br />
               <span className="text-[var(--primary)] italic">Pub Kültürünün</span><br />
               Buluşma Noktası
             </h2>
 
-            <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-8 md:mb-10">
+            <p
+              className="text-gray-400"
+              style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '36px' }}
+            >
               Barney Gastro Pub, geleneksel pub atmosferini modern gastronomi ile birleştiren
               benzersiz bir deneyim sunuyor. Özenle seçilmiş craft biralarımız,
               şeflerimizin ustalıkla hazırladığı lezzetler ve sıcak atmosferimizle
@@ -97,21 +111,43 @@ export default function About() {
             </p>
 
             {/* Features */}
-            <div className="space-y-3 md:space-y-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {features.map((feature, index) => (
                 <div
                   key={feature.title}
-                  className="group flex items-center gap-5 p-5 bg-[var(--dark-lighter)] border border-white/5 rounded-xl hover:border-[var(--primary)]/30 transition-colors animate-fade-in-up"
-                  style={{ animationDelay: `${200 + index * 100}ms` }}
+                  className="group flex items-center transition-colors animate-fade-in-up hover:border-[var(--primary)]/30"
+                  style={{
+                    gap: '20px',
+                    padding: '20px',
+                    background: 'linear-gradient(145deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    borderRadius: '14px',
+                    animationDelay: `${200 + index * 100}ms`,
+                  }}
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] flex items-center justify-center text-[var(--dark)]">
+                  <div
+                    style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '14px',
+                      background: 'linear-gradient(135deg, var(--primary) 0%, #b8922a 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--dark)',
+                      flexShrink: 0,
+                    }}
+                  >
                     <feature.icon size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg group-hover:text-[var(--primary)] transition-colors">
+                    <h4
+                      className="group-hover:text-[var(--primary)] transition-colors"
+                      style={{ fontWeight: '600', fontSize: '1.1rem', marginBottom: '4px' }}
+                    >
                       {feature.title}
                     </h4>
-                    <p className="text-gray-400 text-sm">{feature.description}</p>
+                    <p style={{ color: 'rgba(156, 163, 175, 1)', fontSize: '0.9rem' }}>{feature.description}</p>
                   </div>
                 </div>
               ))}

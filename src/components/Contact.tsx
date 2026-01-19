@@ -1,6 +1,6 @@
 'use client';
 
-import { MapPin, Clock, Phone, Instagram } from 'lucide-react';
+import { MapPin, Clock, Phone, Instagram, Beer, Music, Utensils } from 'lucide-react';
 
 const contactInfo = [
   {
@@ -22,47 +22,112 @@ const contactInfo = [
   },
 ];
 
+const highlights = [
+  { icon: Beer, text: '20+ Craft Bira' },
+  { icon: Music, text: 'Canlı Müzik' },
+  { icon: Utensils, text: 'Gurme Lezzetler' },
+];
+
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-16 md:py-24 lg:py-32 bg-[var(--dark-lighter)] overflow-hidden">
+    <section
+      id="contact"
+      className="relative overflow-hidden"
+      style={{
+        padding: '64px 0 80px 0',
+        marginTop: '32px',
+        background: 'var(--dark-lighter)',
+      }}
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--primary)]/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[var(--primary)]/5 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div className="relative z-10 max-w-7xl mx-auto section-padding">
+        <div className="grid lg:grid-cols-2 items-start" style={{ gap: '48px' }}>
           {/* Info */}
           <div className="animate-fade-in-up">
-            <span className="inline-block px-4 py-2 border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)] mb-4 md:mb-6">
+            <span
+              className="inline-block border border-[var(--primary)]/30 rounded-full text-xs uppercase tracking-[0.2em] text-[var(--primary)]"
+              style={{ padding: '8px 20px', marginBottom: '20px', display: 'inline-block' }}
+            >
               İletişim
             </span>
             <h2
-              className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 animate-fade-in-up"
-              style={{ animationDelay: '100ms' }}
+              className="font-[family-name:var(--font-playfair)] font-bold animate-fade-in-up"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '16px', animationDelay: '100ms' }}
             >
               Bizi <span className="gradient-text">Ziyaret Edin</span>
             </h2>
             <p
-              className="text-gray-400 text-base md:text-lg mb-8 md:mb-10 animate-fade-in"
-              style={{ animationDelay: '200ms' }}
+              className="text-gray-400 animate-fade-in"
+              style={{ fontSize: '1.1rem', marginBottom: '32px', lineHeight: '1.7', animationDelay: '200ms' }}
             >
-              Sizleri ağırlamaktan mutluluk duyarız
+              Sizleri ağırlamaktan mutluluk duyarız. Kaliteli zaman geçirmek için ideal mekan.
             </p>
 
-            <div className="space-y-4 md:space-y-5">
+            {/* Highlights */}
+            <div
+              className="animate-fade-in-up"
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '12px',
+                marginBottom: '32px',
+                animationDelay: '250ms',
+              }}
+            >
+              {highlights.map((item) => (
+                <div
+                  key={item.text}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '10px 16px',
+                    background: 'rgba(201, 162, 39, 0.1)',
+                    border: '1px solid rgba(201, 162, 39, 0.2)',
+                    borderRadius: '50px',
+                  }}
+                >
+                  <item.icon size={16} className="text-[var(--primary)]" />
+                  <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.9)' }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {contactInfo.map((info, index) => {
                 const CardContent = (
                   <>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] flex items-center justify-center text-[var(--dark)] flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+                    <div
+                      style={{
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '14px',
+                        background: 'linear-gradient(135deg, var(--primary) 0%, #b8922a 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'var(--dark)',
+                        flexShrink: 0,
+                        transition: 'transform 0.3s ease',
+                      }}
+                      className="group-hover:scale-105"
+                    >
                       <info.icon size={24} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg mb-1 group-hover:text-[var(--primary)] transition-colors">
+                      <h4
+                        style={{ fontWeight: '600', fontSize: '1.1rem', marginBottom: '4px' }}
+                        className="group-hover:text-[var(--primary)] transition-colors"
+                      >
                         {info.title}
                       </h4>
                       {info.content.map((line, i) => (
-                        <p key={i} className="text-gray-400">
+                        <p key={i} style={{ color: 'rgba(156, 163, 175, 1)', fontSize: '0.95rem' }}>
                           {line}
                         </p>
                       ))}
@@ -74,19 +139,41 @@ export default function Contact() {
                   <div
                     key={info.title}
                     className="animate-fade-in-up"
-                    style={{ animationDelay: `${200 + index * 100}ms` }}
+                    style={{ animationDelay: `${300 + index * 100}ms` }}
                   >
                     {info.href ? (
                       <a
                         href={info.href}
                         target={info.href.startsWith('http') ? '_blank' : undefined}
                         rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="group flex items-start gap-5 p-6 glass-card rounded-2xl transition-all duration-300 hover:translate-x-2 hover:border-[var(--primary)]/30"
+                        className="group transition-all duration-300 hover:translate-x-2"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '20px',
+                          padding: '20px 24px',
+                          background: 'linear-gradient(145deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          borderRadius: '16px',
+                          boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                        }}
                       >
                         {CardContent}
                       </a>
                     ) : (
-                      <div className="group flex items-start gap-5 p-6 glass-card rounded-2xl">
+                      <div
+                        className="group"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '20px',
+                          padding: '20px 24px',
+                          background: 'linear-gradient(145deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          borderRadius: '16px',
+                          boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                        }}
+                      >
                         {CardContent}
                       </div>
                     )}
@@ -95,19 +182,28 @@ export default function Contact() {
               })}
             </div>
 
-            {/* Social Link - Only Instagram */}
+            {/* Social Link - Instagram */}
             <div
-              className="mt-8 md:mt-10 animate-fade-in-up"
-              style={{ animationDelay: '500ms' }}
+              className="animate-fade-in-up"
+              style={{ marginTop: '32px', animationDelay: '600ms' }}
             >
               <a
                 href="https://www.instagram.com/barneygastro/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-5 md:px-6 py-2.5 md:py-3 glass-gold rounded-full hover:bg-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1"
+                className="transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  padding: '14px 28px',
+                  background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(201, 162, 39, 0.05) 100%)',
+                  border: '1px solid rgba(201, 162, 39, 0.3)',
+                  borderRadius: '50px',
+                }}
               >
                 <Instagram size={20} className="text-[var(--primary)]" />
-                <span className="text-white font-medium text-sm md:text-base">@barneygastro</span>
+                <span style={{ color: 'white', fontWeight: '500', fontSize: '0.95rem' }}>@barneygastro</span>
               </a>
             </div>
           </div>

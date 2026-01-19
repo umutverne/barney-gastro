@@ -22,26 +22,33 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--dark)] pt-12 md:pt-20 pb-6 md:pb-8 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+    <footer
+      style={{
+        background: 'var(--dark)',
+        marginTop: '32px',
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+      }}
+      className="pt-12 pb-8 md:pt-16 md:pb-10"
+    >
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }} className="px-6 md:px-8">
         {/* Top */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 pb-10 md:pb-16 border-b border-white/5">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-10 md:gap-12 pb-10 md:pb-16 border-b border-white/5">
           {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link href="#home" className="inline-block mb-4 md:mb-6">
+          <div className="col-span-2 lg:col-span-2">
+            <Link href="#home" className="inline-block mb-5 md:mb-6">
               <span className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl tracking-[0.2em] text-[var(--primary)]">
                 BARNEY
               </span>
-              <span className="block text-xs tracking-[0.4em] text-gray-400 uppercase">
+              <span className="block text-xs tracking-[0.4em] text-gray-400 uppercase mt-1">
                 Gastro Pub
               </span>
             </Link>
-            <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-sm">
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-sm mb-6">
               Craft biralar, gurme lezzetler ve unutulmaz anlar için buluşma noktanız.
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-3 mt-6 md:mt-8">
+            <div className="flex gap-4">
               <a
                 href="https://www.instagram.com/barneygastro/"
                 target="_blank"
@@ -63,13 +70,13 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-6">Keşfet</h4>
-            <ul className="space-y-2 md:space-y-3">
+            <h4 className="font-semibold text-sm md:text-base mb-4 md:mb-5 text-white">Keşfet</h4>
+            <ul className="space-y-3 md:space-y-3">
               {footerLinks.discover.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-[var(--primary)] transition-colors hover:translate-x-1 inline-block"
+                    className="text-gray-400 text-sm hover:text-[var(--primary)] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -79,11 +86,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-6">Hizmetler</h4>
-            <ul className="space-y-2 md:space-y-3">
+            <h4 className="font-semibold text-sm md:text-base mb-4 md:mb-5 text-white">Hizmetler</h4>
+            <ul className="space-y-3 md:space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
-                  <span className="text-gray-400 text-sm md:text-base">
+                  <span className="text-gray-400 text-sm">
                     {link.label}
                   </span>
                 </li>
@@ -92,15 +99,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-6">Takip Edin</h4>
-            <ul className="space-y-2 md:space-y-3">
+            <h4 className="font-semibold text-sm md:text-base mb-4 md:mb-5 text-white">Takip Edin</h4>
+            <ul className="space-y-3 md:space-y-3">
               {footerLinks.social.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-[var(--primary)] transition-colors hover:translate-x-1 inline-block"
+                    className="text-gray-400 text-sm hover:text-[var(--primary)] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -111,8 +118,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 pt-6 md:pt-8">
-          <p className="text-gray-500 text-xs md:text-sm">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 md:pt-10">
+          <p className="text-gray-500 text-xs md:text-sm text-center md:text-left">
             © 2025 Barney Gastro Pub. Tüm hakları saklıdır.
           </p>
         </div>

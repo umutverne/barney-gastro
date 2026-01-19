@@ -54,17 +54,46 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-[var(--dark-lighter)] border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 lg:gap-12">
+    <section
+      style={{
+        padding: '48px 0',
+        marginTop: '32px',
+        marginBottom: '32px',
+        background: 'var(--dark-lighter)',
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
+      }}
+    >
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '24px',
+          }}
+          className="lg:grid-cols-4"
+        >
           {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className="text-center p-6 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="animate-fade-in-up"
+              style={{
+                textAlign: 'center',
+                padding: '24px 16px',
+                animationDelay: `${index * 100}ms`,
+              }}
             >
               <AnimatedNumber value={stat.number} suffix={stat.suffix} />
-              <span className="block mt-2 text-sm text-gray-400 uppercase tracking-wider">
+              <span
+                style={{
+                  display: 'block',
+                  marginTop: '8px',
+                  fontSize: '13px',
+                  color: 'rgba(156, 163, 175, 1)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                }}
+              >
                 {stat.label}
               </span>
             </div>

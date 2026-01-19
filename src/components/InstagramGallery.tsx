@@ -42,22 +42,49 @@ const images = [
 
 export default function InstagramGallery() {
   return (
-    <section id="gallery" className="py-16 md:py-24 lg:py-32 bg-[var(--dark-lighter)]">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+    <section
+      id="gallery"
+      style={{
+        padding: '64px 0 80px 0',
+        marginTop: '32px',
+        background: 'var(--dark-lighter)',
+      }}
+    >
+      <div className="max-w-7xl mx-auto section-padding">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16 animate-fade-in-up">
-          <span className="inline-block text-sm font-semibold uppercase tracking-[0.2em] text-[var(--primary)] mb-3 md:mb-4">
+        <div className="animate-fade-in-up" style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              padding: '8px 20px',
+              border: '1px solid rgba(201, 162, 39, 0.3)',
+              borderRadius: '50px',
+              fontSize: '11px',
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '0.2em',
+              color: 'var(--primary)',
+              marginBottom: '20px',
+            }}
+          >
             @barneygastro
           </span>
-          <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
+          <h2
+            style={{
+              fontFamily: 'var(--font-playfair)',
+              fontSize: 'clamp(28px, 5vw, 42px)',
+              fontWeight: '700',
+              marginBottom: '12px',
+            }}
+          >
             Instagram&apos;da Biz
           </h2>
-          <p className="text-gray-400 text-base md:text-lg">Anlarımızı takip edin</p>
+          <p style={{ color: 'rgba(156, 163, 175, 1)', fontSize: '16px' }}>Anlarımızı takip edin</p>
         </div>
       </div>
 
       {/* Gallery Grid */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+      <div className="max-w-7xl mx-auto section-padding">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 animate-fade-in">
           {images.map((image, index) => (
             <a
@@ -88,21 +115,34 @@ export default function InstagramGallery() {
       </div>
 
       {/* CTA */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+      <div className="max-w-7xl mx-auto section-padding">
         <div
-          className="text-center mt-8 md:mt-12 animate-fade-in-up"
-          style={{ animationDelay: '400ms' }}
+          className="animate-fade-in-up"
+          style={{ textAlign: 'center', marginTop: '40px', animationDelay: '400ms' }}
         >
           <a
             href="https://www.instagram.com/barneygastro/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 rounded-full font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             style={{
-              background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '16px 36px',
+              background: 'linear-gradient(135deg, var(--primary) 0%, #b8922a 100%)',
+              color: 'var(--dark)',
+              fontWeight: '700',
+              fontSize: '13px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              borderRadius: '10px',
+              boxShadow: '0 6px 20px rgba(201, 162, 39, 0.35)',
+              transition: 'all 0.3s ease',
+              textDecoration: 'none',
             }}
+            className="hover:-translate-y-1"
           >
-            <Instagram size={20} />
+            <Instagram size={18} />
             <span>Takip Et</span>
           </a>
         </div>
